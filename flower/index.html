@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>complete responsive flower website design tutorial</title>
+
+        <!-- font aWesome cdn link --> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+        <!-- custom css file link -->
+        <link rel="stylesheet" href="style.css">
+       
+</head>
+<body>
+
+<!-- header section starts -->
+ 
+<header>
+
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <a href="#" class="logo">flower<span>.</span></a>
+
+    <nav class="navbar"> 
+        <a href="#home">home</a>
+        <a href="#about">about</a>
+        <a href="#products">product</a>
+        <a href="#review">review</a>
+        <a href="#contact">contact</a>
+    </nav>
+
+    <div class="icons">
+        <a href="#" class="fas fa-heart"></a>
+        <a href="#" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">
+                0
+            </span>
+        </a>
+        <a href="#" id="profile-icon" class="fas fa-user"></a>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- header section starts -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>fresh flower</h3>
+        <span> natural & beutiful flowers</span>
+        <p>Loren ipsum dolor sit amet consectetur adipisicing elit, Beatae laborum ut minus corrupti dolorum dolore assumenda iste voluptate doloren pariatur.</p>
+        <a href="a" class="btn">shop now</a>
+    </div>
+</section>
+
+
+<!-- header section ends -->
+
+<!--about section starts -->
+
+<section class="about" id="about">
+
+    <h1 class="heading"> <span> about </span> us </h1>
+
+    <div class="row">
+
+        <div class="video-container">
+            <video src="video about.mp4" loop autoplay muted></video>
+            <h3>best flower sellers</h3>
+        </div>
+
+        <div class="content">
+            <h3>why choose us?</h3>
+            <p>At Blooming Gardens, we pride ourselves on delivering exceptional quality flowers sourced from the finest growers to ensure freshness and longevity. Our talented florists hand-craft each bouquet, offering unique and beautiful designs that stand out. With fast and reliable delivery services, your flowers will arrive in perfect condition, bringing a smile to your doorstep. Our commitment to excellent customer service means we're here to make your experience delightful and memorable. Plus, our eco-friendly practices ensure that you can feel good about your purchase, knowing that you're supporting sustainable practices. Choose us, and let your love for flowers blossom with the best!</p>
+            <a href="#" class="btn">learn more</a>
+        </div>
+    </div>
+
+</section>
+
+<!--about section ends -->
+
+
+<!-- icons section starts-->
+
+<section class="icons-container">
+
+    <div class="icons">
+       <img src="icon-1.png" alt="">
+        <div class="info">
+            <h3>free delivery</h3>
+            <span>on all orders</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <img src="icon-2.png" alt="">
+         <div class="info">
+             <h3>10 days returns</h3>
+             <span>moneyback guarantee</span>
+         </div>
+     </div>
+
+     <div class="icons">
+        <img src="icon-3.png" alt="">
+         <div class="info">
+             <h3>offer & gifts</h3>
+             <span>on all orders</span>
+         </div>
+     </div>
+
+     <div class="icons">
+        <img src="icon-4.png" alt="">
+         <div class="info">
+             <h3>secure paymens</h3>
+             <span>protected by paypal</span>
+         </div>
+     </div>
+
+</section>
+
+ <!-- icons section ends-->
+
+<!-- product section starts -->
+
+<main class="main">
+    <h2>
+     Latest
+     <span>
+      Products
+     </span>
+    </h2>
+    <section class="products" id="products">
+    <div class="products">
+        <div class="product-card" data-name="Rose" data-price="180000" onclick="openModal('Rose', this)">
+            <div class="discount">
+            -10%
+            </div>
+            <img alt="Bouquet of white and yellow flowers" height="300" src="red rose.jpg" width="300"/>
+            <div class="add-to-cart" onclick="addToCart(this)">
+            <i class="fas fa-heart"></i>
+            Add To Cart
+            <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3>
+            Rose
+            </h3>
+            <div class="price">
+            Rp180.000
+            <del>
+            Rp200.000
+            </del>
+        </div>
+    </div>
+        <div class="product-card" data-name="Daisy" data-price="135000" onclick="openModal('Daisy', this)">
+            <div class="discount">
+            -10%
+            </div>
+            <img alt="Bouquet of red roses" height="300" src="daisy white.jpg" width="300"/>
+            <div class="add-to-cart" onclick="addToCart(this)">
+            <i class="fas fa-heart"></i>
+            Add To Cart
+            <i class="fas fa-shopping-cart"></i>
+             </div>
+            <h3>
+            Daisy
+            </h3>
+            <div class="price">
+            Rp135.000
+            <del> 
+            Rp150.000 
+            </del>
+        </div>
+    </div>
+        <div class="product-card" data-name="Lili of The Valley" data-price="2700000" onclick="openModal('Lili of the Valley', this)">
+            <div class="discount">
+            -10%
+            </div>
+            <img alt="Potted plant with white flowers" height="300" src="lily blue.jpg" width="300"/>
+            <div class="add-to-cart" onclick="addToCart(this)">
+            <i class="fas fa-heart"></i>
+            Add To Cart
+            <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3>
+            Lili Of The Valley
+            </h3>
+            <div class="price">
+            Rp2.700.000
+            <del>
+            Rp3.000.000
+            </del>
+        </div>
+    </div>
+     <div class="product-card" data-name="Tulip" data-price="720000"onclick="openModal('Tulip', this)">
+      <div class="discount">
+       -10%
+      </div>
+      <img alt="Bouquet of colorful flowers" height="300" src="tulip pink.jpg" width="300"/>
+      <div class="add-to-cart" onclick="addToCart(this)">
+       <i class="fas fa-heart">
+       </i>
+       Add To Cart
+       <i class="fas fa-shopping-cart">
+       </i>
+      </div>
+      <h3>
+       Tulip
+      </h3>
+      <div class="price">
+       Rp720.000
+       <del>
+        Rp800.000
+       </del>
+      </div>
+     </div>
+     <div class="product-card" data-name="Pink Sunflower" data-price="450000" onclick="openModal('Pink Sunflower', this)">
+      <div class="discount">
+       -10%
+      </div>
+      <img alt="Bouquet of purple tulips" height="300" src="pink sunflower.jpg" width="300"/>
+      <div class="add-to-cart" onclick="addToCart(this)">
+       <i class="fas fa-heart">
+       </i>
+       Add To Cart
+       <i class="fas fa-shopping-cart">
+       </i>
+      </div>
+      <h3>
+       Pink Sunflower
+      </h3>
+      <div class="price">
+       Rp450.000
+       <del>
+        Rp500.000
+       </del>
+      </div>
+     </div>
+     <div class="product-card" data-name="Iris" data-price="495000" onclick="openModal('Iris', this)">
+      <div class="discount">
+       -10%
+      </div>
+      <img alt="Bouquet of mixed flowers" height="300" src="iris flower.jpg" width="300"/>
+      <div class="add-to-cart" onclick="addToCart(this)">
+       <i class="fas fa-heart">
+       </i>
+       Add To Cart
+       <i class="fas fa-shopping-cart">
+       </i>
+      </div>
+      <h3>
+       Iris
+      </h3>
+      <div class="price">
+       Rp495.000
+       <del>
+        Rp550.000
+       </del>
+     </div>
+     </div>
+     <div class="product-card" data-name="Freesia" data-price="405000" onclick="openModal('Freesia', this)">
+        <div class="discount">
+         -10%
+        </div>
+        <img alt="Bouquet of red roses" height="300" src="freesia red.jpg" width="300"/>
+        <div class="add-to-cart" onclick="addToCart(this)">
+         <i class="fas fa-heart">
+         </i>
+         Add To Cart
+         <i class="fas fa-shopping-cart">
+         </i>
+        </div>
+        <h3>
+         Freesia
+        </h3>
+        <div class="price">
+         Rp405.000
+         <del>
+          Rp450.000
+         </del>
+        </div>
+       </div>
+       <div class="product-card" data-name="Anyelir" data-price="225000" onclick="openModal('Anyelir', this)">
+        <div class="discount">
+         -10%
+        </div>
+        <img alt="Bouquet of red roses" height="300" src="carnation red.jpg" width="300"/>
+        <div class="add-to-cart" onclick="addToCart(this)">
+         <i class="fas fa-heart">
+         </i>
+         Add To Cart
+         <i class="fas fa-shopping-cart">
+         </i>
+        </div>
+        <h3>
+         Anyelir
+        </h3>
+        <div class="price">
+         Rp225.000
+         <del>
+          Rp250.000
+         </del>
+        </div>
+       </div>
+    </div>
+    </section>
+</main>
+   <div class="cart" id="cart">
+    <h3>
+     Shopping Cart
+    </h3>
+    <ul id="cart-items">
+    </ul>
+    <button class="checkout" onclick="proceedToCheckout()">
+        Checkout
+    </button>
+   </div>
+   <div class="checkout-page" id="checkout-page">
+    <h2>
+     cekout
+    </h2>
+    <form id="checkout-form" onsubmit="submitCheckout(event)">
+     <div class="form-group">
+      <label for="total">
+       Total Amount
+      </label>
+      <input id="total" name="total" readonly="" type="text"/>
+     </div>
+     <div class="form-group">
+      <label for="payment-method">
+       Payment Method
+      </label>
+      <select id="payment-method" name="payment-method" required="">
+       <option value="">
+        Select Payment Method
+       </option>
+       <option value="credit-card">
+        Credit Card
+       </option>
+       <optgroup label= "Bank Transfer">
+         <option value="bri">BRI</option>
+         <option value="bca">BCA</option>
+       </optgroup>
+       </option>
+       <option value="cash-on-delivery">
+        Cash on Delivery
+       </option>
+      </select>
+     </div>
+     <div class="form-group">
+      <label for="address">
+       Shipping Address
+      </label>
+      <input id="address" name="address" required="" type="text"/>
+     </div>
+     <div class="form-group">
+      <button type="submit">
+       Pay Now
+      </button>
+     </div>
+    </form>
+   </div>
+  <script>
+    let cart = [];
+         function addToCart(element) {
+             const productCard = element.closest('.product-card');
+             const productName = productCard.getAttribute('data-name');
+             const productPrice = productCard.getAttribute('data-price');
+             cart.push({ product: productName, price: parseInt(productPrice) });
+             updateCartCount();
+             updateCartItems();
+         }
+         function updateCartCount() {
+             document.getElementById('cart-count').innerText = cart.length;
+         }
+         function updateCartItems() {
+             const cartItems = document.getElementById('cart-items');
+             cartItems.innerHTML = '';
+             cart.forEach(item => {
+                 const li = document.createElement('li');
+                 li.innerText = `${item.product} - Rp${item.price.toLocaleString()}`;
+                 cartItems.appendChild(li);
+             });
+         }
+         function toggleCart() {
+             const cart = document.getElementById('cart');
+             cart.style.display = cart.style.display === 'none' || cart.style.display === '' ? 'block' : 'none';
+         }
+         function proceedToCheckout() {
+             if (cart.length === 0) {
+                 alert('Your cart is empty!');
+                 return;
+             }
+             let total = 0;
+             cart.forEach(item => {
+                 total += item.price;
+             });
+             document.getElementById('total').value = `Rp${total.toLocaleString()}`;
+             document.getElementById('cart').style.display = 'none';
+             document.getElementById('checkout-page').style.display = 'block';
+         }
+         function submitCheckout(event) {
+             event.preventDefault();
+             const paymentMethod = document.getElementById('payment-method').value;
+             const address = document.getElementById('address').value;
+             if (!paymentMethod || !address) {
+                 alert('Please fill in all fields');
+                 return;
+             }
+             alert('Payment successful! Thank you for your purchase.');
+             cart = [];
+             updateCartCount();
+             updateCartItems();
+             document.getElementById('checkout-page').style.display = 'none';
+         }
+         document.addEventListener('DOMContentLoaded', function () {
+            const stars = document.querySelectorAll('.rating i');
+            stars.forEach((star, index) => {
+                star.addEventListener('click', () => {
+                    stars.forEach((s, i) => {
+                        if (i <= index) {
+                            s.classList.add('selected');
+                        } else {
+                            s.classList.remove('selected');
+                        }
+                    });
+                });
+            });
+        const profileIcon = document.querySelector('.fa-user');
+            const loginModal = document.querySelector('.login-modal');
+            const closeModal = document.querySelector('.close-modal');
+
+            profileIcon.addEventListener('click', () => {
+                loginModal.style.display = 'flex';
+            });
+
+            closeModal.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === loginModal) {
+                    loginModal.style.display = 'none';
+                }
+            });
+        });
+   </script>
+</section>
+
+<!-- product section ends -->
+<section class="review-form-section">
+    <h1>
+     Give Your
+     <span>
+      Review
+     </span>
+    </h1>
+    <form class="review-form">
+     <div class="form-group">
+      <label for="name">
+       Name
+      </label>
+      <input id="name" name="name" type="text"/>
+     </div>
+     <div class="form-group">
+      <label for="email">
+       Email
+      </label>
+      <input id="email" name="email" type="email"/>
+     </div>
+     <div class="form-group">
+      <label for="review">
+       Review
+      </label>
+      <textarea id="review" name="review">
+      </textarea>
+     </div>
+     <div class="form-group">
+      <label>
+       Rating
+      </label>
+      <div class="rating">
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+      </div>
+     </div>
+     <button type="submit">
+      Submit Review
+     </button>
+    </form>
+</section>
+
+<div class="login-modal">
+    <div class="modal-content">
+     <span class="close-modal" style="float: right; cursor: pointer;">
+      &times;
+     </span>
+     <h2>
+      Login
+     </h2>
+     <form>
+      <div class="form-group">
+       <label for="username">
+        Username
+       </label>
+       <input id="username" name="username" type="text"/>
+      </div>
+      <div class="form-group">
+       <label for="password">
+        Password
+       </label>
+       <input id="password" name="password" type="password"/>
+      </div>
+      <button type="submit">
+       Login
+      </button>
+     </form>
+    </div>
+</div>
+<!-- review section starts -->
+<section class="review" id="review">
+<h1 class="heading"> customer's <span>review</span></h1>
+
+<div class="box-container">
+
+    <div class="box">
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <p>The flowers are fresh and beautifully arranged, exceeding my expectations</p>
+        <div class="user">
+            <img src="user1.jpg" alt="" width="200" height="200">
+            <div class="user-info">
+                <h3>_@iyaak</h3>
+                <span>happy customer</span>
+            </div>
+        </div>
+        <span class="fas fa-quote-right"></span>
+    </div>
+    <div class="box">
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <p>The service was quick, and the florist helped me choose the perfect bouquet</p>
+        <div class="user">
+            <img src="user 2.jpg" alt="" width="200" height="200">
+            <div class="user-info">
+                <h3>_@Kiaaa</h3>
+                <span>happy customer</span>
+            </div>
+        </div>
+        <span class="fas fa-quote-right"></span>
+    </div>
+    <div class="box">
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <p>Highly recommended for anyone looking to brighten up their day or surprise a loved one!</p>
+        <div class="user">
+            <img src="user4.jpg" alt="" width="200" height="200">
+            <div class="user-info">
+                <h3>_@Diannnn</h3>
+                <span>happy customer</span>
+            </div>
+        </div>
+        <span class="fas fa-quote-right"></span>
+    </div>
+</div>
+</div>
+</section>
+<!-- review section ends -->
+
+<!-- contact section starts -->
+ <section class="contact" id="contact">
+
+    <h1 class="heading"><span>contact</span>us</h1>
+
+    <div class="row">
+
+        <form action="">
+            <input type="text" placeholder="name" class="box">
+            <input type="email" placeholder="email" class="box">
+            <input type="number" placeholder="number" class="box">
+            <textarea name="" class ="box" placeholder="messange" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="send messange" class="btn">
+        </form>
+
+        <div class="image">
+            <img src ="contact us.jpg" alt="" height="500" width="250">
+        </div>
+    </div>
+ </section>
+ <!-- contact section ends -->
+  
+ <!-- footer section starts -->
+
+ <section class="footer">
+
+    <div class="box-container">
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#">home</a>
+            <a href="#">about</a>
+            <a href="#">products</a>
+            <a href="#">review</a>
+            <a href="#">contact</a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#">my account</a>
+            <a href="#">my order</a>
+            <a href="#">my favorite</a>
+        </div>
+
+        <div class="box">
+            <h3>locations</h3>
+            <a href="#">Java</a>
+            <a href="#">Borneo</a>
+            <a href="#">Sumatra</a>
+            <a href="#">Sulawesi</a>
+    </div>
+
+    <div class="box">
+        <h3>contact info</h3>
+        <a href="#">+123-456-7890</a>
+        <a href="#">example@gmail.com</a>
+        <a href="#">Bekasi, Cikarang -400104</a>
+        <img src="PEMBAYARAN.jpg" alt="" width="100" height="50">
+    </div>
+
+</div>
+
+    <div class="credit">created by<span>Group 1</span>all right reserved</div>
+
+
+ </section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+    </body>
+</html>
+
