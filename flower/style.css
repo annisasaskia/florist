@@ -975,8 +975,8 @@ header .fa-bars{
     }
 }
 
-/* KHUSUS TAMPILAN HP (MOBILE PORTRAIT ONLY) */
-@media (max-width: 600px) {
+/* PERBAIKAN TAMPILAN MOBILE & SMALL WINDOW */
+@media (max-width: 768px) {
     html{
         font-size: 50%;
     }
@@ -985,45 +985,48 @@ header .fa-bars{
         font-size: 3rem ;
     }
 
-    /* Ubah ke Grid 2 Kolom hanya saat di HP */
     .products {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px;
-        width: 100%;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+        padding: 15px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .product-card {
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
+        width: 100% !important;
+        padding: 15px !important;
+        border-radius: 12px !important;
+        box-sizing: border-box !important;
     }
 
     .product-card img {
-        height: 120px;
+        height: 160px !important;
+        width: 100% !important;
+        object-fit: cover !important;
     }
 
     .product-card h3 {
-        font-size: 14px;
-        margin: 5px 0;
+        font-size: 16px !important;
+        margin: 8px 0 !important;
     }
 
     .product-card .price {
-        font-size: 13px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
+        font-size: 14px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2px !important;
     }
 
     .product-card .price del {
-        margin-left: 0;
-        font-size: 11px;
+        margin-left: 0 !important;
+        font-size: 12px !important;
     }
 
     .product-card .add-to-cart {
-        font-size: 11px;
-        margin: 5px 0;
+        font-size: 13px !important;
+        margin: 8px 0 !important;
     }
 }
