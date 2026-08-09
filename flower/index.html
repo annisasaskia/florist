@@ -11,7 +11,7 @@
 
         <!-- custom css file link -->
         <link rel="stylesheet" href="style.css">
-       
+
 </head>
 <body>
 
@@ -40,6 +40,9 @@
                 0
             </span>
         </a>
+        <a href="#" onclick="openMyOrder(); return false;">
+            <i class="fas fa-receipt"></i>
+        </a>
         <a href="#" id="profile-icon" class="fas fa-user"></a>
     </div>
 
@@ -54,9 +57,10 @@
     <div class="content">
         <h3>fresh flower</h3>
         <span> natural & beutiful flowers</span>
-        <p>Loren ipsum dolor sit amet consectetur adipisicing elit, Beatae laborum ut minus corrupti dolorum dolore assumenda iste voluptate doloren pariatur.</p>
-        <a href="a" class="btn">shop now</a>
+        <p>Discover our handpicked collection of fresh flowers crafted to bring beauty and joy to every moment. Freshly delivered to your doorstep.</p>
+        <a href="#" class="btn">shop now</a>
     </div>
+
 </section>
 
 
@@ -317,41 +321,29 @@
     </h3>
     <ul id="cart-items">
     </ul>
+    <div class="cart-total" id="cart-total">
+        Total: Rp0
+    </div>
     <button class="checkout" onclick="proceedToCheckout()">
         Checkout
     </button>
    </div>
-   <div class="checkout-page" id="checkout-page">
+   <div class="checkout-page" id="checkout-page" style="display:none;">
     <h2>
      cekout
     </h2>
     <form id="checkout-form" onsubmit="submitCheckout(event)">
      <div class="form-group">
-      <label for="total">
-       Total Amount
+      <label for="cust-name">
+       Nama
       </label>
-      <input id="total" name="total" readonly="" type="text"/>
+      <input id="cust-name" name="cust-name" required="" type="text"/>
      </div>
      <div class="form-group">
-      <label for="payment-method">
-       Payment Method
+      <label for="cust-phone">
+       Nomor Telephone
       </label>
-      <select id="payment-method" name="payment-method" required="">
-       <option value="">
-        Select Payment Method
-       </option>
-       <option value="credit-card">
-        Credit Card
-       </option>
-       <optgroup label= "Bank Transfer">
-         <option value="bri">BRI</option>
-         <option value="bca">BCA</option>
-       </optgroup>
-       </option>
-       <option value="cash-on-delivery">
-        Cash on Delivery
-       </option>
-      </select>
+      <input id="cust-phone" name="cust-phone" required="" type="tel"/>
      </div>
      <div class="form-group">
       <label for="address">
@@ -360,14 +352,58 @@
       <input id="address" name="address" required="" type="text"/>
      </div>
      <div class="form-group">
+      <label for="total">
+       Total Amount
+      </label>
+      <input id="total" name="total" readonly="" type="text"/>
+     </div>
+     <div class="form-group">
+      <label for="payment-method">
+       Transfer Ke Rekening
+      </label>
+      <select id="payment-method" name="payment-method" required="" onchange="updateBankInfo()">
+       <option value="">
+        Pilih Bank
+       </option>
+       <option value="bri">BRI</option>
+       <option value="bca">BCA</option>
+      </select>
+     </div>
+     <div class="form-group" id="bank-info" style="display:none;">
+      <p><strong>Transfer ke rekening berikut:</strong></p>
+      <p id="bank-info-text"></p>
+     </div>
+     <div class="form-group">
+      <label for="payment-proof">
+       Upload Bukti Pembayaran
+      </label>
+      <input id="payment-proof" name="payment-proof" required="" type="file" accept="image/*"/>
+     </div>
+     <div class="form-group">
       <button type="submit">
-       Pay Now
+       Kirim Pesanan
       </button>
      </div>
     </form>
    </div>
+
+   <!-- my order section -->
+   <div class="my-order-page" id="my-order-page" style="display:none;">
+    <h2>My Order</h2>
+    <div id="my-order-list">
+        <p>Belum ada pesanan.</p>
+    </div>
+    <button type="button" onclick="closeMyOrder()">Tutup</button>
+   </div>
   <script>
     let cart = [];
+         const SELLER_WHATSAPP = '6282134690705';
+         const BANK_ACCOUNTS = {
+             bri: { name: 'BRI', number: '111 111 1111', holder: 'Toko Bunga Indah' },
+             bca: { name: 'BCA', number: '222 222 2222', holder: 'Toko Bunga Indah' }
+         };
+         let orders = JSON.parse(localStorage.getItem('flowerOrders') || '[]');
+
          function addToCart(element) {
              const productCard = element.closest('.product-card');
              const productName = productCard.getAttribute('data-name');
@@ -382,15 +418,37 @@
          function updateCartItems() {
              const cartItems = document.getElementById('cart-items');
              cartItems.innerHTML = '';
+             let total = 0;
              cart.forEach(item => {
                  const li = document.createElement('li');
                  li.innerText = `${item.product} - Rp${item.price.toLocaleString()}`;
                  cartItems.appendChild(li);
+                 total += item.price;
              });
+             const totalEl = document.getElementById('cart-total');
+             if (totalEl) {
+                 totalEl.innerText = `Total: Rp${total.toLocaleString()}`;
+             }
          }
          function toggleCart() {
              const cart = document.getElementById('cart');
-             cart.style.display = cart.style.display === 'none' || cart.style.display === '' ? 'block' : 'none';
+             const willShow = cart.style.display === 'none' || cart.style.display === '';
+             cart.style.display = willShow ? 'block' : 'none';
+             if (willShow) {
+                 updateCartItems();
+             }
+         }
+         function updateBankInfo() {
+             const select = document.getElementById('payment-method');
+             const bankInfo = document.getElementById('bank-info');
+             const bankInfoText = document.getElementById('bank-info-text');
+             const bank = BANK_ACCOUNTS[select.value];
+             if (bank) {
+                 bankInfoText.innerText = `${bank.name} - ${bank.number} a.n ${bank.holder}`;
+                 bankInfo.style.display = 'block';
+             } else {
+                 bankInfo.style.display = 'none';
+             }
          }
          function proceedToCheckout() {
              if (cart.length === 0) {
@@ -404,20 +462,84 @@
              document.getElementById('total').value = `Rp${total.toLocaleString()}`;
              document.getElementById('cart').style.display = 'none';
              document.getElementById('checkout-page').style.display = 'block';
+             document.getElementById('checkout-page').scrollIntoView({ behavior: 'smooth', block: 'start' });
          }
          function submitCheckout(event) {
              event.preventDefault();
-             const paymentMethod = document.getElementById('payment-method').value;
+             const custName = document.getElementById('cust-name').value;
+             const custPhone = document.getElementById('cust-phone').value;
              const address = document.getElementById('address').value;
-             if (!paymentMethod || !address) {
-                 alert('Please fill in all fields');
+             const paymentMethod = document.getElementById('payment-method').value;
+             const proofInput = document.getElementById('payment-proof');
+             if (!custName || !custPhone || !address || !paymentMethod || !proofInput.files.length) {
+                 alert('Mohon lengkapi semua data dan upload bukti pembayaran');
                  return;
              }
-             alert('Payment successful! Thank you for your purchase.');
+             const bank = BANK_ACCOUNTS[paymentMethod];
+             let total = 0;
+             cart.forEach(item => { total += item.price; });
+
+             const order = {
+                 name: custName,
+                 phone: custPhone,
+                 address: address,
+                 items: cart.map(item => ({ product: item.product, price: item.price })),
+                 total: total,
+                 bank: bank.name,
+                 proofFileName: proofInput.files[0].name,
+                 status: 'Berhasil'
+             };
+             orders.push(order);
+             localStorage.setItem('flowerOrders', JSON.stringify(orders));
+
+             alert('Pesanan diterima! Silakan tunggu konfirmasi dari penjual setelah bukti pembayaran diperiksa.');
              cart = [];
              updateCartCount();
              updateCartItems();
+             document.getElementById('checkout-form').reset();
+             document.getElementById('bank-info').style.display = 'none';
              document.getElementById('checkout-page').style.display = 'none';
+         }
+         function renderMyOrders() {
+             const listEl = document.getElementById('my-order-list');
+             if (!orders.length) {
+                 listEl.innerHTML = '<p>Belum ada pesanan.</p>';
+                 return;
+             }
+             listEl.innerHTML = orders.map(order => {
+                 const productsHtml = order.items.map(it => `${it.product} - Rp${it.price.toLocaleString()}`).join('<br>');
+                 return `
+                    <div class="order-card">
+                        <p><strong>Nama:</strong> ${order.name}</p>
+                        <p><strong>Nomor Telephone:</strong> ${order.phone}</p>
+                        <p><strong>Address:</strong> ${order.address}</p>
+                        <p><strong>Product:</strong><br>${productsHtml}</p>
+                        <p><strong>Total:</strong> Rp${order.total.toLocaleString()}</p>
+                        <p><strong>Payment:</strong> ${order.bank}</p>
+                        <p><strong>Status:</strong> ${order.status}</p>
+                    </div>
+                    <hr>
+                 `;
+             }).join('');
+         }
+         function openMyOrder() {
+             renderMyOrders();
+             document.getElementById('my-order-page').style.display = 'block';
+             document.getElementById('my-order-page').scrollIntoView({ behavior: 'smooth', block: 'start' });
+         }
+         function closeMyOrder() {
+             document.getElementById('my-order-page').style.display = 'none';
+         }
+         function sendContactToWhatsApp(event) {
+             event.preventDefault();
+             const form = event.target;
+             const name = form.querySelector('input[type="text"]').value;
+             const email = form.querySelector('input[type="email"]').value;
+             const phone = form.querySelector('input[type="number"]').value;
+             const message = form.querySelector('textarea').value;
+             const text = `Halo, saya ${name}%0AEmail: ${email}%0ANomor: ${phone}%0APesan: ${message}`;
+             window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${text}`, '_blank');
+             form.reset();
          }
          document.addEventListener('DOMContentLoaded', function () {
             const stars = document.querySelectorAll('.rating i');
@@ -603,11 +725,11 @@
 
     <div class="row">
 
-        <form action="">
-            <input type="text" placeholder="name" class="box">
-            <input type="email" placeholder="email" class="box">
-            <input type="number" placeholder="number" class="box">
-            <textarea name="" class ="box" placeholder="messange" id="" cols="30" rows="10"></textarea>
+        <form action="" onsubmit="sendContactToWhatsApp(event)">
+            <input type="text" placeholder="name" class="box" required>
+            <input type="email" placeholder="email" class="box" required>
+            <input type="number" placeholder="number" class="box" required>
+            <textarea name="" class ="box" placeholder="messange" id="" cols="30" rows="10" required></textarea>
             <input type="submit" value="send messange" class="btn">
         </form>
 
@@ -635,7 +757,7 @@
         <div class="box">
             <h3>extra links</h3>
             <a href="#">my account</a>
-            <a href="#">my order</a>
+            <a href="#" onclick="openMyOrder(); return false;">my order</a>
             <a href="#">my favorite</a>
         </div>
 
@@ -673,4 +795,3 @@
 
     </body>
 </html>
-
