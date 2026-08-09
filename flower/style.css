@@ -931,6 +931,11 @@ header .fa-bars{
 }
 
 @media (max-width: 768px) {
+    /* PENTING: Pangkas margin section 9% bawaan desktop agar produk bisa melebar penuh */
+    section {
+        padding: 1.5rem 3% !important;
+    }
+
     header .fa-bars{
         display: block;
     }
@@ -957,9 +962,9 @@ header .fa-bars{
         display: block;
     }
 
-    /* Fix Background Home di HP */
+    /* Landscape background di HP */
     .home {
-        min-height: 50vh;
+        min-height: 45vh;
         background-size: contain;
     }
 
@@ -979,21 +984,21 @@ header .fa-bars{
         flex: 1 1 100%;
     }
 
-    /* Fix Grid Produk Mobile agar penuh layar & tidak menyisakan ruang kosong */
+    /* GRID PRODUK MOBILE: Dibuat 2 kolom seimbang dan melebar penuh */
     .products {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 1.2rem !important;
-        padding: 1rem !important;
+        padding: 0.5rem !important;
         width: 100% !important;
         max-width: 100% !important;
-        margin: 0 auto !important;
         box-sizing: border-box !important;
     }
 
     .product-card {
         width: 100% !important;
-        max-width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
         padding: 1.2rem !important;
         border-radius: 1.2rem !important;
         box-sizing: border-box !important;
@@ -1001,14 +1006,14 @@ header .fa-bars{
     }
 
     .product-card img {
-        height: 18rem !important;
+        height: 15rem !important;
         width: 100% !important;
         object-fit: cover !important;
         border-radius: .8rem !important;
     }
 
     .product-card h3 {
-        font-size: 1.6rem !important;
+        font-size: 1.5rem !important;
         margin: .8rem 0 !important;
         word-break: break-word;
     }
