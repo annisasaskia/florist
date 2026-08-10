@@ -978,23 +978,33 @@ header .fa-bars{
 
 /* KHUSUS TAMPILAN HP (MOBILE PORTRAIT ONLY) */
 @media (max-width: 600px) {
-    html{
+    html {
         font-size: 50%;
     }
 
-    .heading{
-        font-size: 3rem ;
+    .heading {
+        font-size: 3rem;
     }
 
-    /* Ubah ke Grid 2 Kolom hanya saat di HP */
-    .products {
+    /* Section produk bagian luar */
+    section.products {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 2rem 0;
+        margin: 0;
+    }
+
+    /* Container produk bagian dalam */
+    section.products > .products {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         justify-content: center;
         align-items: start;
         gap: 15px;
-        padding: 15px;
         width: 100%;
+        max-width: 440px;
+        padding: 15px;
         margin: 0 auto;
     }
 
@@ -1006,8 +1016,8 @@ header .fa-bars{
     }
 
     .product-card img {
-        height: 155px;
         width: 100%;
+        height: 155px;
         border-radius: 10px;
         object-fit: contain;
         background: #fff;
