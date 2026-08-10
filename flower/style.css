@@ -990,28 +990,37 @@ header .fa-bars{
     .products {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px;
+        justify-content: center;
+        align-items: start;
+        gap: 15px;
+        padding: 15px;
         width: 100%;
+        margin: 0 auto;
     }
 
     .product-card {
         width: 100%;
-        padding: 10px;
-        border-radius: 10px;
+        min-width: 0;
+        padding: 12px;
+        border-radius: 12px;
     }
 
     .product-card img {
-        height: 120px;
+        height: 155px;
+        width: 100%;
+        border-radius: 10px;
+        object-fir: contain;
+        background: #fff;
     }
 
     .product-card h3 {
-        font-size: 14px;
-        margin: 5px 0;
+        font-size: 16px;
+        line-height: 1.25;
+        margin: 8px 0;
     }
 
     .product-card .price {
-        font-size: 13px;
+        font-size: 14px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1020,11 +1029,12 @@ header .fa-bars{
 
     .product-card .price del {
         margin-left: 0;
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .product-card .add-to-cart {
-        font-size: 11px;
-        margin: 5px 0;
+        font-size: 12px;
+        line-hight: 1.4;
+        margin: 8px 0;
     }
 }
