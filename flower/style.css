@@ -1009,7 +1009,7 @@ header .fa-bars{
         height: 155px;
         width: 100%;
         border-radius: 10px;
-        object-fir: contain;
+        object-fit: contain;
         background: #fff;
     }
 
@@ -1034,7 +1034,7 @@ header .fa-bars{
 
     .product-card .add-to-cart {
         font-size: 12px;
-        line-hight: 1.4;
+        line-height: 1.4;
         margin: 8px 0;
     }
 }
