@@ -179,7 +179,7 @@ header .fa-bars{
 }
 
 .home .content {
-    max-width: 70rem;
+    max-width: 50rem;
     position: relative;
     z-index: 1;
 }
@@ -201,7 +201,6 @@ header .fa-bars{
 }
 
 .home .content p{
-    max-width: 48rem;
     font-size: 1.5rem;
     color: #3a3636;
     padding: 1rem 0;
@@ -248,7 +247,7 @@ header .fa-bars{
     font-family: 'Fraunces', serif;
     font-size: 3rem;
     color: #fff;
-    background: rgba(28, 111, 190, 0.72);
+    background: var(--blue-deep);
     width: 100%;
     padding: 1rem 2rem;
     text-align: center;
@@ -328,9 +327,9 @@ header .fa-bars{
 
 /* DESKTOP PRODUCT DISPLAY (DEFAULT) */
 .products {
-    display: grid;
+    display: flex;
     justify-content: center;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
@@ -372,8 +371,7 @@ header .fa-bars{
     width: 100%;
     border-radius: 10px;
     height: 250px;
-    object-fit: contain;
-    background: #fff;
+    object-fit: cover;
 }
 
 .product-card .discount {
@@ -990,11 +988,10 @@ header .fa-bars{
     /* Ubah ke Grid 2 Kolom hanya saat di HP */
     .products {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 15px;
-        padding: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
         width: 100%;
-        max-width: 100%;
     }
 
     .product-card {
@@ -1004,11 +1001,7 @@ header .fa-bars{
     }
 
     .product-card img {
-        height: 150px;
-        width: 100%;
-        border-radius: 10px;
-        object-fit: contain;
-        background: #fff;
+        height: 120px;
     }
 
     .product-card h3 {
