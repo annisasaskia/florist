@@ -173,8 +173,8 @@ header .fa-bars{
     align-items: center;
     min-height: 100vh;
     position: relative;
-    background:url(../florist/background.jpeg) no-repeat;
-    background-size: cover;
+    background:url(../florist/background.jpeg) no-repeat center center;
+    background-size: 100% 100%;
     background-position: center;
 }
 
@@ -927,7 +927,8 @@ header .fa-bars{
         padding: 2rem;
     }
     .home{
-        background-position: left;
+        background-position: center center;
+        background-size: 100% 100%;
     }
 }
 
