@@ -328,7 +328,7 @@ header .fa-bars{
 
 /* DESKTOP PRODUCT DISPLAY (DEFAULT) */
 .products {
-    display: flex;
+    display: grid;
     justify-content: center;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
